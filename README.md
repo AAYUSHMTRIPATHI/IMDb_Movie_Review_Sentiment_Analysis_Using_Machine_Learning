@@ -2,130 +2,142 @@
 
 ## 📌 Project Overview
 
-This project implements a complete Natural Language Processing (NLP) pipeline to classify IMDb movie reviews as **Positive** or **Negative** using classical machine learning models.
+This project implements a complete Natural Language Processing (NLP) pipeline to classify IMDb movie reviews as **Positive** or **Negative** using classical machine learning techniques.
 
-The goal is to demonstrate:
+The objective is to demonstrate practical understanding of:
 
 - Text preprocessing
-- Feature extraction using TF-IDF
-- Model training and evaluation
-- Performance comparison between classifiers
+- Feature engineering for textual data
+- Machine learning model training
+- Performance evaluation and comparison
 
 ---
 
 ## 📂 Dataset
 
 - **Dataset:** IMDb 50K Movie Reviews
-- **Total Reviews:** 50,000
+- **Total Samples:** 50,000 reviews
 - **Classes:** Positive / Negative
-- **Balanced Dataset:** Yes (25k positive, 25k negative)
+- **Balanced Dataset:** Yes (25,000 positive, 25,000 negative)
 
 Each record contains:
-
-- `review` → Raw review text  
-- `sentiment` → Label (positive / negative)
+- Raw review text
+- Sentiment label (positive or negative)
 
 ---
 
 ## 🧠 Problem Statement
 
-Given a movie review as input text, predict whether the sentiment expressed is:
-
-- ✅ Positive  
-- ❌ Negative  
+Given a movie review as input, predict whether the sentiment expressed is positive or negative.
 
 This is a **Binary Text Classification** problem.
 
 ---
 
-## ⚙️ NLP Pipeline
-Raw Text
-↓
-Text Cleaning (Lowercasing + Regex Cleaning)
-↓
-TF-IDF Vectorization
-↓
-Train-Test Split
-↓
-Model Training
-↓
-Evaluation
+## ⚙️ NLP Workflow
 
+The complete NLP pipeline implemented in this project:
+
+1. Raw Text Input  
+2. Text Cleaning and Normalization  
+3. Feature Extraction using TF-IDF  
+4. Train-Test Split  
+5. Model Training  
+6. Model Evaluation  
+7. Performance Comparison  
 
 ---
 
 ## 🧹 Text Preprocessing
 
-Steps performed:
+The following preprocessing steps were applied:
 
-- Convert text to lowercase
-- Remove non-alphabetic characters using Regular Expressions
-- Remove stopwords during vectorization
+- Conversion of text to lowercase
+- Removal of punctuation, numbers, and special characters
+- Stopword removal during vectorization
 
-Example cleaning function:
+This ensures that the model focuses only on meaningful textual patterns.
 
-```python
-import re
+---
 
-def clean_text(text):
-    text = text.lower()
-    text = re.sub(r'[^a-zA-Z]', ' ', text)
-    return text
+## 🔢 Feature Engineering
 
-🔢 Feature Engineering
-TF-IDF Vectorization
+Text data was converted into numerical format using **TF-IDF (Term Frequency – Inverse Document Frequency)**.
 
-Used TfidfVectorizer to convert text into numerical features.
+TF-IDF assigns higher importance to words that are meaningful within a review while reducing the weight of very common words.
 
-Stopwords removed
+The result is a high-dimensional sparse matrix representation suitable for machine learning models.
 
-Max features limited to 5000
+---
 
-Sparse matrix representation
+## 🤖 Models Implemented
 
-TF-IDF assigns higher weights to important words while reducing the influence of common words.
+### 1️⃣ Logistic Regression
 
-🤖 Models Implemented
-1️⃣ Logistic Regression
+- Strong baseline model for text classification
+- Handles high-dimensional sparse data effectively
 
-Handles high-dimensional sparse data efficiently
+**Accuracy Achieved:** ~88.9%
 
-Strong baseline model for text classification
+---
 
-Accuracy: ~88.9%
-F1 Score: ~0.89
+### 2️⃣ Multinomial Naive Bayes
 
-2️⃣ Multinomial Naive Bayes
+- Probabilistic model based on Bayes' Theorem
+- Assumes independence between words
+- Computationally efficient
 
-Based on probabilistic modeling
+**Accuracy Achieved:** ~85.2%
 
-Assumes word independence
+---
 
-Fast and efficient for text data
+## 📊 Model Evaluation
 
-Accuracy: ~85.2%
-F1 Score: ~0.85
+The following metrics were used:
 
-📊 Model Evaluation
+- Accuracy
+- Precision
+- Recall
+- F1-Score
+- Confusion Matrix
 
-Metrics used:
+### Performance Summary
 
-Accuracy
+| Model                | Accuracy |
+|----------------------|----------|
+| Logistic Regression  | 88.9%    |
+| Naive Bayes          | 85.2%    |
 
-Precision
+Logistic Regression outperformed Naive Bayes, demonstrating stronger performance on TF-IDF features.
 
-Recall
+---
 
-F1-Score
+## 📈 Key Insights
 
-Confusion Matrix
+- Logistic Regression performs better for high-dimensional sparse text data.
+- Naive Bayes provides a fast and reliable baseline model.
+- Balanced dataset leads to stable evaluation metrics.
+- Classical machine learning models can achieve high performance without deep learning.
 
-Logistic Regression Performance
-Metric	Score
-Accuracy	0.8888
-F1-Score	0.89
-Naive Bayes Performance
-Metric	Score
-Accuracy	0.8522
-F1-Score	0.85
+---
 
+## 🚀 Future Improvements
+
+- Hyperparameter tuning
+- Incorporating n-grams (bigrams/trigrams)
+- Comparing with ensemble methods
+- Implementing deep learning models (LSTM / Transformers)
+- Deploying the model using a web framework
+
+---
+
+## 📌 Conclusion
+
+This project demonstrates a complete NLP sentiment classification pipeline using classical machine learning techniques. The results highlight the effectiveness of TF-IDF feature engineering combined with linear classifiers for text analysis tasks.
+
+The implementation reflects practical understanding of NLP preprocessing, feature extraction, and model evaluation.
+
+---
+
+### 👤 Author  
+Aayush T
